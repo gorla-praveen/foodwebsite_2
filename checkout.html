@@ -201,40 +201,14 @@
 									<th>Price</th>
 								</tr>
 							</thead>
-							<tbody class="order-details-body">
-								<tr>
-									<td>Product</td>
-									<td>Total</td>
-								</tr>
-								<tr>
-									<td>Strawberry</td>
-									<td>$85.00</td>
-								</tr>
-								<tr>
-									<td>Berry</td>
-									<td>$70.00</td>
-								</tr>
-								<tr>
-									<td>Lemon</td>
-									<td>$35.00</td>
-								</tr>
-							</tbody>
-							<tbody class="checkout-details">
-								<tr>
-									<td>Subtotal</td>
-									<td>$190</td>
-								</tr>
-								<tr>
-									<td>Shipping</td>
-									<td>$50</td>
-								</tr>
-								<tr>
-									<td>Total</td>
-									<td>$240</td>
-								</tr>
-							</tbody>
+							
+<tbody id="cart-items"></tbody>
+<tbody id="totals"></tbody>
+
 						</table>
-						<a href="#" class="boxed-btn">Place Order</a>
+						<button class="boxed-btn" onclick="placeOrder()">
+    Place Order
+</button>
 					</div>
 				</div>
 			</div>
@@ -363,5 +337,59 @@
 	<!-- main js -->
 	<script src="assets/js/main.js"></script>
 
+	<div class="modal fade" id="successModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+
+      <h3>🎉 Order Placed Successfully!</h3>
+      <p>Thank you for your order.</p>
+
+      <button class="btn btn-success" data-dismiss="modal">
+        OK
+      </button>
+
+    </div>
+  </div>
+</div>
+<script>
+function loadCart() {
+	let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+	let cartTable = document.getElementById("cart-items");
+	let totalTable = document.getElementById("totals");
+
+	cartTable.innerHTML = "";
+
+	let subtotal = 0;
+
+	cart.forEach(item => {
+		subtotal += item.price;
+
+		cartTable.innerHTML += `
+			<tr>
+				<td>${item.name}</td>
+				<td>$${item.price}</td>
+			</tr>
+		`;
+	});
+
+	let shipping = cart.length ? 50 : 0;
+	let total = subtotal + shipping;
+
+	totalTable.innerHTML = `
+		<tr><td>Subtotal</td><td>$${subtotal}</td></tr>
+		<tr><td>Shipping</td><td>$${shipping}</td></tr>
+		<tr><td><b>Total</b></td><td><b>$${total}</b></td></tr>
+	`;
+}
+
+loadCart();
+
+function placeOrder() {
+	localStorage.removeItem("cart");
+	loadCart();
+	$("#successModal").modal("show");
+}
+</script>
 </body>
 </html>

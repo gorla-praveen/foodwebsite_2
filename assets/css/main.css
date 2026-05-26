@@ -2784,3 +2784,33 @@ table.order-details tbody td {
   align-items: center;
   justify-content: center;
 }
+
+.header-icons {
+    display: flex;
+    align-items: center;   /* 🔥 THIS FIXES VERTICAL POSITION */
+    gap: 15px;
+}
+
+/* align icons properly */
+.header-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* fix icon size alignment */
+.header-icons i {
+    line-height: 1;
+    font-size: 18px;
+}
+
+.main-menu-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.top-header-area .row {
+    display: flex;
+    align-items: center;
+}
