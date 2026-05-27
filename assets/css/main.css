@@ -2765,44 +2765,74 @@ table.order-details tbody td {
 }
 
 
+/* ===== CART BADGE ===== */
 .cart-badge {
-  position: relative;
+    position: relative;
 }
 
 .cart-badge::after {
-  content: attr(data-count);
-  position: absolute;
-  top: -8px;
-  right: -10px;
-  background: red;
-  color: white;
-  font-size: 12px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    content: attr(data-count);
+    position: absolute;
+    top: -6px;
+    right: -8px;
+
+    background: red;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    line-height: 1;
+}
+.order-btn {
+    background: linear-gradient(45deg, #ff4d00, #ff7a00);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+
+    box-shadow: 0 3px 10px rgba(255, 77, 0, 0.3);
+    transition: 0.3s;
 }
 
+.order-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 77, 0, 0.5);
+}
+
+/* ===== HEADER ICON CONTAINER ===== */
 .header-icons {
     display: flex;
-    align-items: center;   /* 🔥 THIS FIXES VERTICAL POSITION */
+    align-items: center;
     gap: 15px;
+
+    /* pushes icons to right side */
+    margin-left: auto;
 }
 
-/* align icons properly */
+/* ===== ICON LINKS ===== */
 .header-icons a {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+
+    text-decoration: none;
+    color: inherit;
 }
 
-/* fix icon size alignment */
+/* ===== ICON SIZE CONTROL ===== */
 .header-icons i {
-    line-height: 1;
     font-size: 18px;
+    line-height: 1;
 }
 
 .main-menu-wrap {
